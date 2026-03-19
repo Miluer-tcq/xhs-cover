@@ -1,67 +1,105 @@
 # xhs-cover
 
-A lightweight Claude Code skill for generating Xiaohongshu (小红书) cover images locally with pure Pillow.
+一个轻量的小红书封面生成 Skill，使用纯 Pillow 在本地生成封面图。
 
-It turns a title, subtitle, tag, and short step list into a styled `1242x1660` PNG cover without Playwright or Chromium.
+它可以把标题、副标题、标签和步骤文案生成为一张 `1242x1660` 的小红书风格 PNG 封面，
+不依赖 Playwright，也不需要 Chromium。
 
-## Features
+## 功能特点
 
-- Pure Pillow rendering
-- No browser dependency
-- Works well for 小红书封面 / 首图 / cover image / thumbnail
-- Simple install: just `SKILL.md` + `scripts/cover.py`
+- 纯 Pillow 渲染
+- 无浏览器依赖
+- 适合小红书封面 / 首图 / cover image / thumbnail
+- 文件结构简单，便于直接安装为 Claude Code Skill
 
-## Repository layout
+## 仓库结构
 
 ```text
 xhs-cover/
+├─ README.md
 ├─ SKILL.md
 └─ scripts/
    └─ cover.py
 ```
 
-## Install
+## 安装方式
 
-### Option 1: install globally
+### 方式 1：手动安装到 Claude Code
 
-Copy or clone this repository into:
+#### 全局安装
+
+把仓库复制或克隆到：
 
 ```bash
 ~/.claude/skills/xhs-cover
 ```
 
-### Option 2: install for one project only
+#### 项目内安装
 
-Copy or clone this repository into:
+把仓库复制或克隆到：
 
 ```bash
-<your-project>/.claude/skills/xhs-cover
+<你的项目>/.claude/skills/xhs-cover
 ```
 
-## Dependency
+例如：
 
-Install Pillow:
+```bash
+git clone https://github.com/Miluer-tcq/xhs-cover.git ~/.claude/skills/xhs-cover
+```
+
+或者：
+
+```bash
+git clone https://github.com/Miluer-tcq/xhs-cover.git ./.claude/skills/xhs-cover
+```
+
+### 方式 2：把仓库链接直接发给 AI 帮你安装
+
+如果你使用的 AI / agent 支持安装 Skill，可以直接把这个仓库链接发给它：
+
+```text
+https://github.com/Miluer-tcq/xhs-cover
+```
+
+例如你可以直接对 AI 说：
+
+```text
+帮我安装这个 skill 到当前项目：
+https://github.com/Miluer-tcq/xhs-cover
+```
+
+或者：
+
+```text
+请把这个 GitHub 项目安装成 Claude Code skill：
+https://github.com/Miluer-tcq/xhs-cover
+```
+
+## 依赖
+
+安装 Pillow：
 
 ```bash
 pip install pillow
 ```
 
-Or:
+或者：
 
 ```bash
 uv pip install pillow
 ```
 
-## Usage
+## 使用方式
 
-After the skill is installed, ask Claude Code things like:
+安装完成后，可以直接对 Claude Code 说：
 
 - 帮我做一个小红书封面
 - 给这篇笔记生成首图
-- Generate an XHS cover for this post
-- Create a cover image with 4 steps and a comparison box
+- 生成一张小红书风格封面图
+- 做一个带步骤卡片和对比框的封面
 
-You can also run the bundled script directly:
+也可以直接运行脚本：
 
 ```bash
 python scripts/cover.py "AI做小红书封面终于不用熬夜了" \
@@ -75,14 +113,14 @@ python scripts/cover.py "AI做小红书封面终于不用熬夜了" \
   -o ./cover.png
 ```
 
-## Output
+## 输出说明
 
-- Format: PNG
-- Resolution: `1242 x 1660`
-- Style: notebook-style Xiaohongshu cover
+- 格式：PNG
+- 尺寸：`1242 x 1660`
+- 风格：手账风 / 小红书封面风格
 
-## Notes
+## 说明
 
-- Keep cover text short for the best layout.
-- The generator auto-wraps and auto-shrinks text when needed.
-- Windows users will get the best Chinese rendering if Microsoft YaHei is available.
+- 文案尽量简短，排版效果会更好。
+- 生成器会自动换行、自动缩放，尽量避免内容溢出。
+- 在 Windows 上，如果系统有微软雅黑字体，中文显示效果会更稳定。
